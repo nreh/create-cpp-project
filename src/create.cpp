@@ -125,7 +125,7 @@ bool create_project(Info& info) {
 
         new_directory(project_directory);
 
-        run_command("cd " + project_directory.string() + " && git init");
+        run_command("cd '" + project_directory.string() + "' && git init");
 
         new_directory(project_directory / "src");
         new_directory(project_directory / "external");
@@ -134,7 +134,7 @@ bool create_project(Info& info) {
         for (auto& e : info.external_tools) {
             cout << "Adding submodule from " << e->github_url << endl;
             auto o = run_command(
-                "cd " + (project_directory / "external").string() + " && git submodule add " + e->github_url + ".git 2>&1"
+                "cd '" + (project_directory / "external").string() + "' && git submodule add " + e->github_url + ".git 2>&1"
             );
 
             if (o.return_code != 0) {
