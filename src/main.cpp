@@ -22,7 +22,7 @@ int main() {
     /**
      * Set up CLI app and parse arguments into variables
      */
-    CLI::App app("Utility program for quickly creating git repo for a C++ project");
+    CLI::App app("Utility program for quickly creating a git repo for a C++ project");
 
     Info project_info;
 
