@@ -201,4 +201,14 @@ void string_prompt(std::string prompt, function<void(string)> on_submit, std::st
     }
 }
 
+/**
+ * @brief There are instances where certain fields are already filled so there's no need for them to have a prompt. However,
+ * we still want to show the user that value. This function prints out the field name and its value in the same format as the
+ * string_prompt() function would - but doesn't ask for any user input.
+ */
+void string_prompt_filled(const std::string& fieldname, const std::string& value) {
+    std::cout << termcolor::bold << fieldname << ": " << termcolor::reset << termcolor::yellow << value << std::endl
+              << termcolor::reset;
+}
+
 void grey_text(std::string str) { cout << termcolor::grey << str << termcolor::reset << endl; }
