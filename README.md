@@ -19,3 +19,11 @@ and run `UNINSTALL.sh` to uninstall the program:
 ## Usage
 
 Run `create-cpp-project` to start the program which will then create a directory in the current folder containing project files.
+
+You can pass the name and description to the command like so,
+
+```
+create-cpp-project "My C++ Project" "Some text describing my project"
+```
+
+Run `create-cpp-project -h` to see possible flags and misc information.
