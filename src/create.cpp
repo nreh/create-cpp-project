@@ -264,10 +264,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
         new_file(project_directory / "CMakeLists.txt", contents);
 
-        new_file(project_directory / ".gitignore", R"(
-.vscode/
-build/
-)");
+        new_file(project_directory / ".gitignore", ".vscode/\nbuild/");
+
+        contents = R"(IndentWidth: 4
+ColumnLimit: 125
+IndentPPDirectives: BeforeHash
+PointerAlignment: Left
+AlignAfterOpenBracket: BlockIndent
+BinPackArguments: false
+BinPackParameters: false
+)";
+
+        new_file(project_directory / ".clang-format", contents);
 
     } catch (string e) {
         cout << termcolor::red << termcolor::bold << e << endl << termcolor::reset;
