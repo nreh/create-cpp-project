@@ -41,7 +41,7 @@ int main() {
         string_prompt("Project Name", [&](string name) { project_info.name = name; });
     }
 
-    if (project_info.name.size() > 0) {
+    if (project_info.description.size() > 0) {
         // project name was given in cli
         string_prompt_filled("Description Name", project_info.description);
     } else {
