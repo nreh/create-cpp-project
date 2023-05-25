@@ -44,7 +44,7 @@ out run_command(string command) {
             continue; // no need to print empty lines
 
         r.o += temp + '\n';
-        cout << termcolor::grey << temp << endl << termcolor::reset << flush;
+        cout << termcolor::dark << temp << endl << termcolor::reset << flush;
     }
 
     if (proc.eof() && proc.fail()) {
