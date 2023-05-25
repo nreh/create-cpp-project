@@ -66,15 +66,15 @@ std::string replace_all(const std::string& str, const std::string& from, const s
  */
 std::string escape_string(std::string str) { return replace_all(str, "\"", "\\\""); }
 
-void boolean_prompt(std::string prompt, function<void()> on_yes, function<void()> on_no) {
+void boolean_prompt(std::string prompt, std::function<void()> on_yes, std::function<void()> on_no) {
     while (true) {
         std::cout << termcolor::bold << prompt << " " << termcolor::reset << termcolor::grey << "(y/n) " << termcolor::reset;
 
-        cin.clear();
-        cin.sync();
+        std::cin.clear();
+        std::cin.sync();
 
         std::string input;
-        getline(cin, input);
+        std::getline(std::cin, input);
 
         trim(input);
 
@@ -98,7 +98,7 @@ void boolean_prompt(std::string prompt, function<void()> on_yes, function<void()
         }
     }
 }
-void boolean_prompt(std::string prompt, function<void()> on_yes, function<void()> on_no, bool default_value) {
+void boolean_prompt(std::string prompt, std::function<void()> on_yes, std::function<void()> on_no, bool default_value) {
     while (true) {
         std::cout << termcolor::bold << prompt << " " << termcolor::reset << termcolor::grey;
         if (default_value) {
@@ -109,11 +109,11 @@ void boolean_prompt(std::string prompt, function<void()> on_yes, function<void()
                       << termcolor::reset;
         }
 
-        cin.clear();
-        cin.sync();
+        std::cin.clear();
+        std::cin.sync();
 
         std::string input;
-        getline(cin, input);
+        std::getline(std::cin, input);
 
         trim(input);
 
@@ -132,7 +132,7 @@ void boolean_prompt(std::string prompt, function<void()> on_yes, function<void()
                 std::cout << "(y/" << termcolor::bold << termcolor::white << "n" << termcolor::reset << termcolor::grey
                           << ") " << termcolor::reset;
             }
-            std::cout << termcolor::grey << termcolor::italic << o << termcolor::reset << endl;
+            std::cout << termcolor::grey << termcolor::italic << o << termcolor::reset << std::endl;
 
             if (default_value) {
                 on_yes();
@@ -158,7 +158,7 @@ void boolean_prompt(std::string prompt, function<void()> on_yes, function<void()
     }
 }
 
-void string_prompt(std::string prompt, function<void(string)> on_submit) {
+void string_prompt(std::string prompt, std::function<void(std::string)> on_submit) {
     std::string temp;
 
     while (true) {
@@ -176,7 +176,7 @@ void string_prompt(std::string prompt, function<void(string)> on_submit) {
         }
     }
 }
-void string_prompt(std::string prompt, function<void(string)> on_submit, std::string default_value) {
+void string_prompt(std::string prompt, std::function<void(std::string)> on_submit, std::string default_value) {
     std::string temp;
 
     while (true) {
@@ -191,7 +191,7 @@ void string_prompt(std::string prompt, function<void(string)> on_submit, std::st
             std::cout << "\e[A\r"; // move up one line
             std::cout << termcolor::bold << prompt << termcolor::reset << termcolor::grey << " (Default is '"
                       << default_value << "')" << termcolor::reset << termcolor::bold << ": " << termcolor::reset;
-            std::cout << termcolor::grey << termcolor::italic << default_value << termcolor::reset << endl;
+            std::cout << termcolor::grey << termcolor::italic << default_value << termcolor::reset << std::endl;
             on_submit(default_value);
             break;
         } else {
@@ -211,4 +211,4 @@ void string_prompt_filled(const std::string& fieldname, const std::string& value
               << termcolor::reset;
 }
 
-void grey_text(std::string str) { cout << termcolor::grey << str << termcolor::reset << endl; }
+void grey_text(std::string str) { std::cout << termcolor::grey << str << termcolor::reset << std::endl; }
